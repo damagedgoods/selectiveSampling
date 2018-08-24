@@ -2,7 +2,7 @@ PImage photo, photo2;
 File file = new File(sketchPath()+"/data/");
 String image = "p1.jpg";
 int current = 1;
-int total = 8;
+int total = 15;
 
 int n1 = 25;
 int n2 = 50;
@@ -24,9 +24,11 @@ void setup() {
       photo2.copy(photo,i*n2,j*n2,n1,n1,i*n1,j*n1,n1,n1);
     }
   }  
-  image(photo2, 600, 0);
+  image(photo2, photo.width, 0);
 }
 
+void draw() {
+}
 
 void mouseClicked() {
   current++;
