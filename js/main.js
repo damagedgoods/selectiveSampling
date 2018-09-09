@@ -1,12 +1,12 @@
-var bigTile = 50;
-var smallTile = 20;
-var src = "./data/p1.jpg";
-
 var w = 800;
 var h = 1000;
 
 function init() {
-    console.log("Init");
+
+    var bigTile = $("#big_tile").val();
+    var smallTile = $("#small_tile").val();
+    var src = "./data/p"+$("#image").val()+".jpg";
+
 
     var numCols = w / bigTile;
     var numRows = h / bigTile;
@@ -18,7 +18,6 @@ function init() {
             div.css("left", j*smallTile);
             div.css("top", i*smallTile);
             div.css("background", "url("+src+") "+(-j*bigTile)+"px "+(-i*bigTile)+"px");
-            //div.css("background-position", j*bigTile+" "+i*bigTile);
             div.width(smallTile+"px");
             div.height(smallTile+"px");
             $("#container").append(div);
@@ -27,4 +26,9 @@ function init() {
 
     $("#container").width(numCols*smallTile);
 
+}
+
+function update() {
+    $("#container").empty();
+    init();
 }

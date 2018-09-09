@@ -22,14 +22,27 @@
     <div id="control_panel">
         <h2>Settings</h2>
 
-        <h3>Tile size</h3>
+        <span class="label">Small tile</span>
+        <input type="text" id="small_tile" size="3" value="20"></input>
 
-        <h3>X offset</h3>
+        <span class="label">Big tile</span>
+        <input type="text" id="big_tile" size="3" value="50"></input>
 
-        <h3>Y offset</h3>
+        <span class="label">X offset</span>
+        <input type="text" id="x_offset" size="3"></input>
 
-        <h3 >Image</h3>
+        <span class="label">Y offset</span>
+        <input type="text" id="y_offset" size="3"></input>
+
+        <span class="label">Image</span>
+        <select id="image">
+            <option value="1" selected>Img 1</option>
+            <option value="2">Img 2</option>
+            <option value="3">Img 3</option>
+            <option value="4">Img 4</option>
+        </select>
         
+        <input type="button" name="submit" value="Update" onclick="javascript:update()"></input>
     </div>
     
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>    
