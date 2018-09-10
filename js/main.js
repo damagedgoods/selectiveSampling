@@ -33,35 +33,43 @@ function init() {
     }); 
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
-
     initTiles();
 
 }
 
 function initTiles() {
-
-    //console.log("Init tiles");
-    $("#container").empty();
-    var bigTile = $("#big_tile").val();
-    var smallTile = $("#small_tile").val();
+    
     var src = "./data/p"+$("#image").val()+".jpg";
-    var numCols = w / bigTile;
-    var numRows = h / bigTile;
+    var img = new Image();
+    img.src = src;
+    img.onload = function() {        
+        w = this.width;
+        h = this.height;
+        console.log(w,h);
 
-    for (var i=0; i<numRows; i++) {
-        for (var j=0; j<numCols; j++) {            
-            var div = $('<div></div>').addClass('smallDiv').attr('id',i+'_'+j);
-            div.css("position", "absolute");
-            div.css("left", j*smallTile);
-            div.css("top", i*smallTile);
-            div.css("background", "url("+src+") "+(-j*bigTile)+"px "+(-i*bigTile)+"px");
-            div.width(smallTile+"px");
-            div.height(smallTile+"px");
-            $("#container").append(div);
+        // Una vez carga la original, creo los tiles
+        $("#container").empty();
+        var bigTile = $("#big_tile").val();
+        var smallTile = $("#small_tile").val();
+        
+        var numCols = w / bigTile;
+        var numRows = h / bigTile;
+
+        for (var i=0; i<numRows; i++) {
+            for (var j=0; j<numCols; j++) {            
+                var div = $('<div></div>').addClass('smallDiv').attr('id',i+'_'+j);
+                div.css("position", "absolute");
+                div.css("left", j*smallTile);
+                div.css("top", i*smallTile);
+                div.css("background", "url("+src+") "+(-j*bigTile)+"px "+(-i*bigTile)+"px");
+                div.width(smallTile+"px");
+                div.height(smallTile+"px");
+                $("#container").append(div);
+            }
         }
-    }
+        $("#container").width(numCols*smallTile);
 
-    $("#container").width(numCols*smallTile);
+    }
 
 
 }
