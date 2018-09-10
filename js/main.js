@@ -2,6 +2,10 @@ var w = 800;
 var h = 1000;
 var img = 1;
 
+var dragging = false;
+var dragX, dragY;
+var offsetX = 0, offsetY = 0;
+
 function init() {
 
     $("#small_tile_slider")
@@ -28,11 +32,31 @@ function init() {
       }
     });
 
-    $("#container").click(function() {
-        nextImg();
-    }); 
+    $("#container").mousedown(function(e) {
+        // Empieza el drag
+        dragging = true;
+        dragX = e.pageX;
+        dragY = e.pageY;
+        //nextImg();
+    });
+
+    $("#container").mouseover(function(e) {
+        if (dragging) {
+            offsetX = dragX - e.pageX;
+            offsetY = dragY - e.pageY;
+            initTiles();
+        }
+    });
+
+    $("#container").mouseup(function(e) {
+        // Suelto el drag
+        if ((e.pageX == dragX)&&(e.pageY == dragY)) nextImg();
+        dragging = false;
+
+    });
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
+
     initTiles();
 
 }
@@ -42,7 +66,9 @@ function initTiles() {
     var src = "./data/p"+$("#image").val()+".jpg";
     var img = new Image();
     img.src = src;
-    img.onload = function() {        
+    img.onload = function() {
+
+        //console.log("o: "+offsetX, offsetY);
 
         // Una vez carga la original, creo los tiles
         $("#container").empty();
@@ -58,17 +84,14 @@ function initTiles() {
                 div.css("position", "absolute");
                 div.css("left", j*smallTile);
                 div.css("top", i*smallTile);
-                div.css("background", "url("+src+") "+(-j*bigTile)+"px "+(-i*bigTile)+"px");
+                div.css("background", "url("+src+") "+(-j*bigTile+offsetX)+"px "+(-i*bigTile+offsetY)+"px");
                 div.width(smallTile+"px");
                 div.height(smallTile+"px");
                 $("#container").append(div);
             }
         }
         $("#container").width(numCols*smallTile);
-
     }
-
-
 }
 
 function nextImg() {
