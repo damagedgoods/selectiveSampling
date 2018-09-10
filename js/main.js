@@ -32,6 +32,8 @@ function init() {
         nextImg();
     }); 
 
+    $(".control_link").click(function() {$("#control_panel").toggle()});
+
     initTiles();
 
 }
