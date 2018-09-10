@@ -7,6 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
 </head>
@@ -23,10 +24,12 @@
         <h2>Settings</h2>
 
         <span class="label">Small tile</span>
-        <input type="text" id="small_tile" size="3" value="20" onkeyup="javascript:update()"></input>
+        <input type="hidden" id="small_tile" size="3" value="10"></input>
+        <div id="small_tile_slider"></div>
 
         <span class="label">Big tile</span>
-        <input type="text" id="big_tile" size="3" value="50" onkeyup="javascript:update()"></input>
+        <input type="hidden" id="big_tile" size="3" value="50"></input>
+        <div id="big_tile_slider"></div>        
 
         <span class="label">X offset</span>
         <input type="text" id="x_offset" size="3"></input>
@@ -35,14 +38,14 @@
         <input type="text" id="y_offset" size="3"></input>
 
         <span class="label">Image</span>
-        <select id="image"  onchange="javascript:update()">
+        <select id="image"  onchange="javascript:initTiles()">
             <option value="1" selected>Img 1</option>
             <option value="2">Img 2</option>
             <option value="3">Img 3</option>
             <option value="4">Img 4</option>
         </select>                
     </div>
-    
+     
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>    
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
