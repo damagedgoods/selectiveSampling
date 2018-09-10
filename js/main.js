@@ -1,5 +1,6 @@
 var w = 800;
 var h = 1000;
+var img = 1;
 
 function init() {
 
@@ -25,7 +26,11 @@ function init() {
         $( "#big_tile" ).val( ui.value );
         initTiles();
       }
-    });    
+    });
+
+    $("#container").click(function() {
+        nextImg();
+    }); 
 
     initTiles();
 
@@ -57,4 +62,10 @@ function initTiles() {
     $("#container").width(numCols*smallTile);
 
 
+}
+
+function nextImg() {
+    img = (img++ % 4 == 0)?1:img;
+    $("#image").val(img);
+    initTiles();
 }
