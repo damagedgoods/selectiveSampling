@@ -43,17 +43,14 @@ function initTiles() {
     var img = new Image();
     img.src = src;
     img.onload = function() {        
-        w = this.width;
-        h = this.height;
-        console.log(w,h);
 
         // Una vez carga la original, creo los tiles
         $("#container").empty();
         var bigTile = $("#big_tile").val();
         var smallTile = $("#small_tile").val();
         
-        var numCols = w / bigTile;
-        var numRows = h / bigTile;
+        var numCols = this.width / bigTile;
+        var numRows = this.height / bigTile;
 
         for (var i=0; i<numRows; i++) {
             for (var j=0; j<numCols; j++) {            
