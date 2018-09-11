@@ -5,7 +5,21 @@ var img = 1;
 var dragging = false;
 var dragX, dragY;
 var offsetX = 0, offsetY = 0;
-var currentImg = 1;
+var currentImg = 0;
+
+var imgList = [
+    "./data/p1.jpg",
+    "./data/p2.jpg",
+    "./data/p3.jpg",
+    "./data/p4.jpg",
+    "./data/p5.jpg",
+    "./data/p6.jpg",
+    "./data/p7.jpg",
+    "./data/p8.jpg",
+    "./data/p9.jpg",
+    "./data/p10.jpg",
+    "http://revolverwarholgallery.com/wp-content/uploads/unspecified-4.jpg"
+]
 
 function init() {
 
@@ -61,14 +75,14 @@ function init() {
     // Tabla de imágenes
     var table = $("#imageTable");
     var row = $('<tr></tr>');
-    for (var i=1; i <= 4; i++) {
-        var src = "./data/p"+i+".jpg";
+    for (var i=0; i<imgList.length; i++) {
+        var src = imgList[i];
         var img = $('<img onclick="javascript:selectImg('+i+')">');
         img.attr("src", src);
         var td = $('<td></td>');
         td.append(img);
         row.append(td);
-        if (i % 3 == 0) {
+        if ((i+1) % 3 == 0) {
             table.append(row);
             row = $('<tr></tr>');
         }
@@ -80,7 +94,8 @@ function init() {
 
 function initTiles() {
     
-    var src = "./data/p"+currentImg+".jpg";
+    // var src = "./data/p"+currentImg+".jpg";
+    var src = imgList[currentImg];
     var img = new Image();
     img.src = src;
     img.onload = function() {
@@ -115,7 +130,7 @@ function selectImg(id) {
 }
 
 function nextImg() {
-    img = (img++ % 4 == 0)?1:img;
+    img = (img++ == imgList.length)?0:img;
     currentImg = img
     initTiles();
 }
