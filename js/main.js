@@ -72,29 +72,12 @@ function init() {
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
 
-    // Tabla de imágenes
-    var table = $("#imageTable");
-    var row = $('<tr></tr>');
-    for (var i=0; i<imgList.length; i++) {
-        var src = imgList[i];
-        var img = $('<img onclick="javascript:selectImg('+i+')">');
-        img.attr("src", src);
-        var td = $('<td></td>');
-        td.append(img);
-        row.append(td);
-        if ((i+1) % 3 == 0) {
-            table.append(row);
-            row = $('<tr></tr>');
-        }
-    }
-    // Añado la que está pendiente
-    table.append(row);
+    buildThumbnails();
     initTiles();
 }
 
 function initTiles() {
     
-    // var src = "./data/p"+currentImg+".jpg";
     var src = imgList[currentImg];
     var img = new Image();
     img.src = src;
@@ -124,13 +107,52 @@ function initTiles() {
     }
 }
 
+function buildThumbnails() {
+
+    // Tabla de imágenes
+    var table = $("#imageTable");
+    table.empty();
+    var row = $('<tr></tr>');
+    for (var i=0; i<imgList.length; i++) {
+        var src = imgList[i];
+        var img = $('<img onclick="javascript:selectImg('+i+')">');
+        img.attr("src", src);
+        var td = $('<td></td>');
+        td.append(img);
+        row.append(td);
+        if ((i+1) % 3 == 0) {
+            table.append(row);
+            row = $('<tr></tr>');
+        }
+    }
+
+    // Añado celda con el +
+    var td = $('<td onclick="javascript:addImg()" class="plus">+</td>');
+    row.append(td);    
+
+    // Añado la que está pendiente
+    table.append(row);
+}
+
 function selectImg(id) {
-    currentImg = id
+    currentImg = id;
     initTiles();
 }
 
 function nextImg() {
     img = (img++ == imgList.length)?0:img;
-    currentImg = img
+    currentImg = img;
+    initTiles();
+}
+
+function addImg() { 
+    $('#imgInput').show();
+}
+
+function addNewImg() {
+    imgList.push($('#imgInputField').val());
+    $('#imgInputField').val("");
+    $('#imgInput').hide();
+    buildThumbnails();
     initTiles();
 }
