@@ -5,6 +5,7 @@ var img = 1;
 var dragging = false;
 var dragX, dragY;
 var offsetX = 0, offsetY = 0;
+var currentImg = 1;
 
 function init() {
 
@@ -57,18 +58,32 @@ function init() {
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
 
+    // Tabla de imágenes
+    var table = $("#imageTable");
+    var row = $('<tr></tr>');
+    for (var i=1; i <= 4; i++) {
+        var src = "./data/p"+i+".jpg";
+        var img = $('<img onclick="javascript:selectImg('+i+')">');
+        img.attr("src", src);
+        var td = $('<td></td>');
+        td.append(img);
+        row.append(td);
+        if (i % 3 == 0) {
+            table.append(row);
+            row = $('<tr></tr>');
+        }
+    }
+    // Añado la que está pendiente
+    table.append(row);
     initTiles();
-
 }
 
 function initTiles() {
     
-    var src = "./data/p"+$("#image").val()+".jpg";
+    var src = "./data/p"+currentImg+".jpg";
     var img = new Image();
     img.src = src;
     img.onload = function() {
-
-        //console.log("o: "+offsetX, offsetY);
 
         // Una vez carga la original, creo los tiles
         $("#container").empty();
@@ -94,8 +109,13 @@ function initTiles() {
     }
 }
 
+function selectImg(id) {
+    currentImg = id
+    initTiles();
+}
+
 function nextImg() {
     img = (img++ % 4 == 0)?1:img;
-    $("#image").val(img);
+    currentImg = img
     initTiles();
 }
