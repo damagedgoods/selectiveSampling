@@ -72,6 +72,7 @@ function init() {
     });
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
+    $('#imgInput').click(function(e) {e.stopPropagation()});
     $('html').click(function() {$('#imgInput').hide();});
 
     buildThumbnails();
@@ -148,16 +149,30 @@ function nextImg() {
     initTiles();
 }
 
-function addImgPanel(e) { 
+function addImgPanel(e) {
     $('#imgInput').show();
     $('#imgInputField').focus();
     event.stopPropagation();     
 }
 
 function addNewImg() {
-    imgList.push($('#imgInputField').val());
+    var newURL = $('#imgInputField').val();
+    if (!validURL(newURL)) {
+        // Pintar error de formato
+        return;
+    }    
+    imgList.push(newURL);
     $('#imgInputField').val("");
     $('#imgInput').hide();
     buildThumbnails();
     initTiles();
+}
+
+function validURL(str) {
+  var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+  if(!regex .test(str)) {
+    return false;
+  } else {
+    return true;
+  }
 }
