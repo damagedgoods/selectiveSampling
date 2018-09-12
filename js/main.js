@@ -159,6 +159,7 @@ function addNewImg() {
     var newURL = $('#imgInputField').val();
     if (!validURL(newURL)) {
         // Pintar error de formato
+        $('#imgInputField').addClass("error");
         return;
     }    
     imgList.push(newURL);

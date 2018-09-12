@@ -68,9 +68,36 @@ input {
 	padding: 20px;
 	position: absolute;
 	right: 40px;
-	width: 300px;
+	width: 330px;
 	-webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);	
 	display: none;
+}
+
+#imgInputField {
+	height: 30px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	outline: none;
+	border: 1px solid #ccc;
+}
+
+.button {
+	margin: 0 0 0 10px;
+	height: 30px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	min-width: 60px;
+	outline: none;
+	background-color: #4A90E2;
+	color: #fff;
+	border: none;
+	
+}
+
+.error {
+	border: 1px solid red !important;
 }
 
 .smallDiv {
