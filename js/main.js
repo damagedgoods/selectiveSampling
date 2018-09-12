@@ -107,6 +107,7 @@ function initTiles() {
             }
         }
         $("#container").width(numCols*smallTile);
+        $("#container").height(numRows*smallTile);
     }
 }
 
