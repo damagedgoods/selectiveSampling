@@ -13,6 +13,7 @@ body {
 #container {
 	position: relative;
 	margin: 40px auto;
+	cursor: pointer;
 }
 
 #instructions {
@@ -107,7 +108,7 @@ input {
 	vertical-align: top;	
 }
 
-#imageTable tr td.plus {
+#imageTable tr td#plus {
 	vertical-align: middle;
 	border: 1px solid #eee;
 }

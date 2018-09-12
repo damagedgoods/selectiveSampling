@@ -72,6 +72,7 @@ function init() {
     });
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
+    $('html').click(function() {$('#imgInput').hide();});
 
     buildThumbnails();
     initTiles();
@@ -79,8 +80,6 @@ function init() {
 
 function initTiles() {
     
-    console.log(currentImg);
-
     var src = imgList[currentImg];
     var img = new Image();
     img.src = src;
@@ -131,7 +130,7 @@ function buildThumbnails() {
     }
 
     // Añado celda con el +
-    var td = $('<td onclick="javascript:addImg()" class="plus">+</td>');
+    var td = $('<td><a id="addImgLink" onclick="javascript:addImgPanel(event)">+</a></td>');
     row.append(td);    
 
     // Añado la que está pendiente
@@ -149,9 +148,10 @@ function nextImg() {
     initTiles();
 }
 
-function addImg() { 
+function addImgPanel(e) { 
     $('#imgInput').show();
     $('#imgInputField').focus();
+    event.stopPropagation();     
 }
 
 function addNewImg() {
