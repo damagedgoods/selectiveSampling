@@ -18,7 +18,8 @@ var imgList = [
     "./data/p8.jpg",
     "./data/p9.jpg",
     "./data/p10.jpg",
-    "http://revolverwarholgallery.com/wp-content/uploads/unspecified-4.jpg"
+    "http://revolverwarholgallery.com/wp-content/uploads/unspecified-4.jpg",
+    "http://www.musee-orangerie.fr/sites/default/files/thumbnails/image/grant_wood_-_american_gothic_site.jpg"
 ]
 
 function init() {
@@ -78,6 +79,8 @@ function init() {
 
 function initTiles() {
     
+    console.log(currentImg);
+
     var src = imgList[currentImg];
     var img = new Image();
     img.src = src;
@@ -140,13 +143,14 @@ function selectImg(id) {
 }
 
 function nextImg() {
-    img = (img++ == imgList.length)?0:img;
-    currentImg = img;
+    currentImg++;
+    if (currentImg == imgList.length) currentImg = 0;
     initTiles();
 }
 
 function addImg() { 
     $('#imgInput').show();
+    $('#imgInputField').focus();
 }
 
 function addNewImg() {
