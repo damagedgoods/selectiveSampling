@@ -88,6 +88,8 @@ function initTiles() {
 
         // Una vez carga la original, creo los tiles
         $("#container").empty();
+        $("#originalImage").empty();
+
         var bigTile = $("#big_tile").val();
         var smallTile = $("#small_tile").val();
         
@@ -104,10 +106,25 @@ function initTiles() {
                 div.width(smallTile+"px");
                 div.height(smallTile+"px");
                 $("#container").append(div);
+
+                // Pinto los cuadros en el  original
+                var div2 = $('<div></div>').addClass('refDiv');
+                div2.css("position", "absolute");
+                div2.css("left", j*bigTile);
+                div2.css("top", i*bigTile);                
+                div2.width(smallTile+"px");
+                div2.height(smallTile+"px");
+                $("#originalImage").append(div2);
             }
         }
         $("#container").width(numCols*smallTile);
         $("#container").height(numRows*smallTile);
+
+        // Cambio la original
+        $('#originalImage').css("background","url("+src+") "+offsetX+"px "+offsetY+"px");
+
+        // Pinto los cuadros
+
     }
 }
 
@@ -136,6 +153,7 @@ function buildThumbnails() {
 
     // Añado la que está pendiente
     table.append(row);
+
 }
 
 function selectImg(id) {

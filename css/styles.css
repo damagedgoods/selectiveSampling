@@ -10,9 +10,15 @@ body {
 
 }
 
+#left {
+	width: 30%;
+	display: block;
+	float: left;
+}
+
 #container {
 	position: relative;
-	margin: 20px auto;
+	margin: 50px auto;
 	cursor: pointer;
 	-webkit-box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);	
 }
@@ -24,6 +30,23 @@ body {
 	text-align: center;
 	width: 300px;
 	margin: 0 auto;
+}
+
+#right {
+	display: block;
+	width: 70%;
+	float: right;
+}
+
+#originalImage  {
+	width: 100%;
+	height: 100%;
+	position: absolute;	
+}
+
+.refDiv {
+	
+	background: rgba(255,255,255,0.2);
 }
 
 h1 {
@@ -52,8 +75,9 @@ input {
 
 }
 
+
 #control_panel {
-	background-color: rgba(255,255,255,0.95);
+	background-color: rgba(255,255,255,0.85);
 	position: fixed;
 	top: 0;
 	right: 0;
