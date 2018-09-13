@@ -73,7 +73,7 @@ function init() {
 
     $(".control_link").click(function() {$("#control_panel").toggle()});
     $('#imgInput').click(function(e) {e.stopPropagation()});
-    $('html').click(function() {$('#imgInput').hide();});
+    $('html').click(function() {closeImgPanel()});
 
     buildThumbnails();
     initTiles();
@@ -157,16 +157,24 @@ function addImgPanel(e) {
 
 function addNewImg() {
     var newURL = $('#imgInputField').val();
-    if (!validURL(newURL)) {
-        // Pintar error de formato
+    if (!validURL(newURL)) {            
+        $('#fieldLabel').text("Wrong URL");
+        $('#fieldLabel').addClass("errorText");
         $('#imgInputField').addClass("error");
         return;
     }    
     imgList.push(newURL);
-    $('#imgInputField').val("");
-    $('#imgInput').hide();
+    closeImgPanel();
     buildThumbnails();
     initTiles();
+}
+
+function closeImgPanel() {
+    $('#imgInputField').val("");
+    $('#imgInput').hide();
+    $('#fieldLabel').text("Enter image URL");
+    $('#fieldLabel').removeClass("errorText");
+    $('#imgInputField').removeClass("error");        
 }
 
 function validURL(str) {
