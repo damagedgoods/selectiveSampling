@@ -104,13 +104,11 @@ function initTiles() {
                 div.css("background", "url("+src+") "+(-j*bigTile+offsetX)+"px "+(-i*bigTile+offsetY)+"px");
                 div.width((smallTile)+"px");
                 div.height((smallTile)+"px");
-                div.click(function() {                    
+                div.click(function() {
                     $(".smallDiv").removeClass("selected");
-                    $(this).toggleClass("selected");
-                    //console.log();
+                    $(this).toggleClass("selected");                
                     var id = $(this).attr("id")                    
-                    var coord = id.substring(10, id.length);
-                    console.log(coord);
+                    var coord = id.substring(10, id.length);                    
                     $(".refDivBig").removeClass("selected");
                     $("#refDivBig_"+coord).addClass("selected");
                 });
@@ -125,13 +123,25 @@ function initTiles() {
                 div2.height(smallTile+"px");
                 $("#originalImage").append(div2);
 
-                // Pinto los cuadros grandesen el  original
+                // Pinto los cuadros grandes en el  original
                 var div3 = $('<div></div>').addClass('refDivBig').attr('id','refDivBig_'+i+'_'+j);;
                 div3.css("position", "absolute");
                 div3.css("left", j*bigTile);
                 div3.css("top", i*bigTile);                
-                div3.width(bigTile+"px");
-                div3.height(bigTile+"px");
+                div3.width((bigTile)+"px");
+                div3.height((bigTile)+"px");
+                div3.click(function() {
+                    var id = $(this).attr("id")                    
+                    var coord = id.substring(10, id.length);                    
+                    console.log(coord);
+                                        
+                    $(".refDivBig").removeClass("selected");
+                    $(this).toggleClass("selected");                
+                                        
+                    $(".smallDiv").removeClass("selected");
+                    $("#smallTile_"+coord).addClass("selected");
+                });
+
                 $("#originalImage").append(div3);
 
             }
