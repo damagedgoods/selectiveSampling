@@ -21,6 +21,8 @@ var imgList = [
 
 function init() {
 
+    console.log("w2");
+
     $("#small_tile_slider")
     .slider({
       min: 2,
@@ -63,13 +65,13 @@ function init() {
 
     $("#container").mouseup(function(e) {
         // Suelto el drag
-        if ((e.pageX == dragX)&&(e.pageY == dragY)) nextImg();
+        //if ((e.pageX == dragX)&&(e.pageY == dragY)) nextImg();
         dragging = false;
 
     });
 
-    $(".control_link").click(function() {$("#control_panel").toggle()});
     $('#imgInput').click(function(e) {e.stopPropagation()});
+    
     $('html').click(function() {closeImgPanel()});
 
     buildThumbnails();
@@ -95,17 +97,27 @@ function initTiles() {
 
         for (var i=0; i<numRows; i++) {
             for (var j=0; j<numCols; j++) {            
-                var div = $('<div></div>').addClass('smallDiv').attr('id',i+'_'+j);
+                var div = $('<div></div>').addClass('smallDiv').attr('id','smallTile_'+i+'_'+j);
                 div.css("position", "absolute");
                 div.css("left", j*smallTile);
                 div.css("top", i*smallTile);
                 div.css("background", "url("+src+") "+(-j*bigTile+offsetX)+"px "+(-i*bigTile+offsetY)+"px");
-                div.width(smallTile+"px");
-                div.height(smallTile+"px");
+                div.width((smallTile)+"px");
+                div.height((smallTile)+"px");
+                div.click(function() {                    
+                    $(".smallDiv").removeClass("selected");
+                    $(this).toggleClass("selected");
+                    //console.log();
+                    var id = $(this).attr("id")                    
+                    var coord = id.substring(10, id.length);
+                    console.log(coord);
+                    $(".refDivBig").removeClass("selected");
+                    $("#refDivBig_"+coord).addClass("selected");
+                });
                 $("#container").append(div);
 
                 // Pinto los cuadros en el  original
-                var div2 = $('<div></div>').addClass('refDiv');
+                var div2 = $('<div></div>').addClass('refDiv').attr('id','refDiv_'+i+'_'+j);;
                 div2.css("position", "absolute");
                 div2.css("left", j*bigTile);
                 div2.css("top", i*bigTile);                
@@ -114,7 +126,7 @@ function initTiles() {
                 $("#originalImage").append(div2);
 
                 // Pinto los cuadros grandesen el  original
-                var div3 = $('<div></div>').addClass('refDivBig');
+                var div3 = $('<div></div>').addClass('refDivBig').attr('id','refDivBig_'+i+'_'+j);;
                 div3.css("position", "absolute");
                 div3.css("left", j*bigTile);
                 div3.css("top", i*bigTile);                
@@ -128,10 +140,7 @@ function initTiles() {
         $("#container").height(numRows*smallTile);
 
         // Cambio la original
-        $('#originalImage').css("background","url("+src+") "+offsetX+"px "+offsetY+"px");
-
-        // Pinto los cuadros
-
+        $('#originalImage').css("background","url("+src+") "+offsetX+"px "+offsetY+"px");    
     }
 }
 
