@@ -9,16 +9,13 @@ var currentImg = 0;
 
 var imgList = [
     "./data/p1.jpg",
-    "./data/p2.jpg",
-    "./data/p3.jpg",
+    "./data/p2.jpg",    
     "./data/p4.jpg",
     "./data/p5.jpg",
     "./data/p6.jpg",
-    "./data/p7.jpg",
-    "./data/p8.jpg",
+    "./data/p7.jpg",    
     "./data/p9.jpg",
-    "./data/p10.jpg",
-    "http://revolverwarholgallery.com/wp-content/uploads/unspecified-4.jpg",
+    "./data/p10.jpg",    
     "http://www.musee-orangerie.fr/sites/default/files/thumbnails/image/grant_wood_-_american_gothic_site.jpg"
 ]
 
@@ -115,6 +112,16 @@ function initTiles() {
                 div2.width(smallTile+"px");
                 div2.height(smallTile+"px");
                 $("#originalImage").append(div2);
+
+                // Pinto los cuadros grandesen el  original
+                var div3 = $('<div></div>').addClass('refDivBig');
+                div3.css("position", "absolute");
+                div3.css("left", j*bigTile);
+                div3.css("top", i*bigTile);                
+                div3.width(bigTile+"px");
+                div3.height(bigTile+"px");
+                $("#originalImage").append(div3);
+
             }
         }
         $("#container").width(numCols*smallTile);
@@ -141,7 +148,7 @@ function buildThumbnails() {
         var td = $('<td></td>');
         td.append(img);
         row.append(td);
-        if ((i+1) % 3 == 0) {
+        if ((i+1) % 6 == 0) {
             table.append(row);
             row = $('<tr></tr>');
         }

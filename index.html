@@ -13,41 +13,60 @@
 </head>
 
 <body onload="javascript:init()">
+    <div id="left">
+        
+    </div>
+
 
     <div id="left">
+        
+        <span id="instructions">Click to reload image, drag to change offset</span>    
         <div id="container"></div>   
+
+        <div id="controls">
+            <span class="label">Tile size</span>
+            <input type="hidden" id="small_tile" size="3" value="10"></input>
+            <div id="small_tile_slider">
+                <div id="small_tile_slider_handle" class="ui-slider-handle"></div>
+            </div>
+
+            <span class="label">Tile number</span>
+            <input type="hidden" id="big_tile" size="3" value="50"></input>
+
+            <div id="big_tile_slider">
+                <div id="gig_tile_slider_handle" class="ui-slider-handle"></div>
+            </div>        
+
+            <table id="imageTable">
+            </table>
+
+            <div id="imgInput">
+                <span id="fieldLabel">Enter image URL</span>
+                <input type="field" id="imgInputField"  size="40"/>
+                <input type="button" class="button" value="Add" onclick="javascript:addNewImg()"/>
+            </div>
+            
+        </div>
+
     </div>
+
 
     <div id="right">
         <div id="originalImage"></div>
     </div>
-    
-    <span id="instructions">Click to reload image, drag to change offset</span>    
+        
 
+<!--
     <a id="open_panel" class="control_link">Open</a>
 
     <div id="control_panel">
         <a id="close_panel" class="control_link">Close</a>
         <h2>Settings</h2>
 
-        <span class="label">Small tile</span>
-        <input type="hidden" id="small_tile" size="3" value="10"></input>
-        <div id="small_tile_slider"></div>
-
-        <span class="label">Big tile</span>
-        <input type="hidden" id="big_tile" size="3" value="50"></input>
-        <div id="big_tile_slider"></div>        
 
         <span class="label">Image</span>
-        <table id="imageTable">
-        </table>
-
-        <div id="imgInput">
-            <span id="fieldLabel">Enter image URL</span>
-            <input type="field" id="imgInputField"  size="40"/>
-            <input type="button" class="button" value="Add" onclick="javascript:addNewImg()"/>
-        </div>
     </div>
+-->
      
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>    
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>

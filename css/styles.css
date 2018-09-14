@@ -11,14 +11,16 @@ body {
 }
 
 #left {
-	width: 30%;
-	display: block;
-	float: left;
+	width: 400px;
+	display: block;	
+	position: absolute;
+	left: 0;
+	height: 100%;
 }
 
 #container {
 	position: relative;
-	margin: 50px auto;
+	margin: 0px auto;
 	cursor: pointer;
 	-webkit-box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);	
 }
@@ -29,13 +31,24 @@ body {
 	color: #ccc;
 	text-align: center;
 	width: 300px;
-	margin: 0 auto;
+	margin: 30px auto;
+}
+
+#controls {
+	position: absolute;
+	bottom: 0;	
+	background-color: #ffffff;
+	width: 320px;
+	margin: 40px 40px;
 }
 
 #right {
-	display: block;
 	width: 70%;
-	float: right;
+	display: block;		
+	left: 400px;
+	position: absolute;
+	background-color: #ff0000;
+	height: 100%;
 }
 
 #originalImage  {
@@ -44,9 +57,15 @@ body {
 	position: absolute;	
 }
 
-.refDiv {
-	
+.refDiv {	
 	background: rgba(255,255,255,0.2);
+	border-bottom: 1px solid rgba(255,255,255,0.4);
+	border-right: 1px solid rgba(255,255,255,0.4);
+}
+
+.refDivBig {	
+	border-bottom: 1px solid rgba(255,255,255,0.4);
+	border-right: 1px solid rgba(255,255,255,0.4);
 }
 
 h1 {
@@ -66,14 +85,12 @@ h2 {
 .label {
 	display: inline-block;
 	width: 100%;
-	margin: 20px 0 0 0;
+	margin: 20px 0 10px 0;
 	font-size: 12px;
-	text-transform: uppercase;
+	color: #666;	
 }
 
-input {
-
-}
+input {}
 
 
 #control_panel {
@@ -85,6 +102,30 @@ input {
 	width: 135px;
 	padding: 30px;
 	-webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+}
+
+.ui-slider {
+	background-color: #eee !important;
+	height: 2px !important;
+	border: 0 !important;
+	cursor: pointer;
+}
+
+div.ui-slider-handle {
+	background-color: #4A90E2 !important;
+	-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;
+	border-radius: 6px !important;
+	width: 12px !important;
+	height: 12px !important;	
+	border: 0 !important;
+	cursor: pointer !important;
+}
+
+.ui-slider-range {
+	background-color: #4A90E2 !important;
+	height: 2px !important;
+	border: 0 !important;
 }
 
 #imgInput {
@@ -160,7 +201,7 @@ input {
 }
 
 #imageTable {
-	margin: 10px 0 0 0;	
+	margin: 30px 0 0 0;	
 	border-collapse: collapse;
 	cursor: pointer;
 }
@@ -186,9 +227,10 @@ input {
 	border: 1px solid #eee;
 	background-color: #4A90E2;
 	color: #fff;	
-	font-size: 22px;
+	font-size: 22px;	
+	margin: 18px 0 0 0;
 }
 
 #imageTable tr td img{
-	width: 40px;
+	width: 50px;
 }
