@@ -114,15 +114,6 @@ function initTiles() {
                 });
                 $("#container").append(div);
 
-                // Pinto los cuadros en el  original
-                var div2 = $('<div></div>').addClass('refDiv').attr('id','refDiv_'+i+'_'+j);;
-                div2.css("position", "absolute");
-                div2.css("left", j*bigTile);
-                div2.css("top", i*bigTile);                
-                div2.width(smallTile+"px");
-                div2.height(smallTile+"px");
-                $("#originalImage").append(div2);
-
                 // Pinto los cuadros grandes en el  original
                 var div3 = $('<div></div>').addClass('refDivBig').attr('id','refDivBig_'+i+'_'+j);;
                 div3.css("position", "absolute");
@@ -141,8 +132,16 @@ function initTiles() {
                     $(".smallDiv").removeClass("selected");
                     $("#smallTile_"+coord).addClass("selected");
                 });
-
                 $("#originalImage").append(div3);
+
+                // Pinto los cuadros pequeños en el  original
+                var div2 = $('<div></div>').addClass('refDiv').attr('id','refDiv_'+i+'_'+j);;
+                div2.css("position", "absolute");
+                div2.css("left", j*bigTile);
+                div2.css("top", i*bigTile);                
+                div2.width(smallTile+"px");
+                div2.height(smallTile+"px");
+                $("#originalImage").append(div2);                
 
             }
         }
