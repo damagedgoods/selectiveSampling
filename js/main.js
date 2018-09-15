@@ -29,6 +29,7 @@ function init() {
       value: 10,
       slide: function( event, ui ) {
         $( "#small_tile" ).val( ui.value );
+        $( "#small_tile_value" ).text( ui.value +"x"+ui.value);
         initTiles();
       }
     });    
@@ -36,11 +37,15 @@ function init() {
     $("#big_tile_slider")
     .slider({
       min: 2,
-      max: 100,
+      max: 15,
       range: "min",
-      value: 50,
+      value: 10,
       slide: function( event, ui ) {
-        $( "#big_tile" ).val( ui.value );
+
+        // big tile = width / num_tiles
+
+        $( "#num_tiles" ).val( ui.value );
+        $( "#num_tiles_value" ).text( ui.value );
         initTiles();
       }
     });
@@ -63,7 +68,6 @@ function init() {
 
     $("#container").mouseup(function(e) {
         // Suelto el drag
-        //if ((e.pageX == dragX)&&(e.pageY == dragY)) nextImg();
         dragging = false;
 
     });
@@ -87,10 +91,11 @@ function initTiles() {
         $("#container").empty();
         $("#originalImage").empty();
 
-        var bigTile = $("#big_tile").val();
-        var smallTile = $("#small_tile").val();
+        var numCols = $("#num_tiles").val();
+        console.log("numTiles: "+numCols);
         
-        var numCols = this.width / bigTile;
+        var bigTile = this.width / numCols;
+        var smallTile = $("#small_tile").val();        
         var numRows = this.height / bigTile;
 
         for (var i=0; i<numRows; i++) {
