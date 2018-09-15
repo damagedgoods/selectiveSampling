@@ -177,7 +177,12 @@ div.ui-slider-handle {
     -webkit-box-sizing: border-box;	
 }
 
-.selected {
+.smallDiv.selected {
+	border: 2px solid rgba(74,144,226,1) !important;
+	background-color: rgba(74,144,226,0.6) !important;
+}
+
+.refDivBig.selected {
 	border: 1px solid rgba(74,144,226,1) !important;
 	background-color: rgba(74,144,226,0.6) !important;
 }
@@ -217,5 +222,6 @@ div.ui-slider-handle {
 }
 
 #imageTable tr td img{
-	width: 54px;		
+	width: 54px;	
+
 }
