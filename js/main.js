@@ -21,8 +21,6 @@ var imgList = [
 
 function init() {
 
-    console.log("w2");
-
     $("#small_tile_slider")
     .slider({
       min: 2,
@@ -166,7 +164,7 @@ function buildThumbnails() {
         var td = $('<td></td>');
         td.append(img);
         row.append(td);
-        if ((i+1) % 6 == 0) {
+        if ((i+1) % 5 == 0) {
             table.append(row);
             row = $('<tr></tr>');
         }
